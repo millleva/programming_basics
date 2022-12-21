@@ -4,11 +4,17 @@
 
 using namespace std;
 
-
+void printVector(vector<int> vec){
+    for(auto ch : vec){
+        cout << ch << ' ';
+    }
+    cout << endl;
+}
 
 int main()
 {
-    cout << toBinary(43) << endl;
+    vector<int> bits = bitVectorFromString("1011");
+    printVector(bits);
 
     return 0;
 }

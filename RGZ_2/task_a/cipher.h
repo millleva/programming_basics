@@ -1,5 +1,8 @@
 #include <string>
+#include <vector>
 
 using namespace std;
 
-string toBinary(int n);
+string intToBin(int n);
+
+vector<int> bitVectorFromString(string binary);
