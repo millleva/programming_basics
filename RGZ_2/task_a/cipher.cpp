@@ -1,5 +1,7 @@
 #include "cipher.h"
 
+using namespace std;
+
 string intToBin(int n){
     string r;
     while(n != 0){
@@ -18,4 +20,12 @@ vector<int> bitVectorFromString(string binary){
     }
 
     return bits;
+}
+
+BinaryNum createBinaryNumFromDec(int decimal){
+    string repr = intToBin(decimal);
+    vector<int> bits = bitVectorFromString(repr);
+    BinaryNum b = {repr, bits};
+
+    return b;
 }
