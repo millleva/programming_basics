@@ -28,12 +28,21 @@ struct BinaryNum{
     }
 
     void swapBits(int a, int b){
+        if(a > bitVector.size()-1 || b > bitVector.size()-1) return;
         int temp = bitVector[a];
         bitVector[a] = bitVector[b];
         bitVector[b] = temp;
         updateReprFromBitVector();
     }
-    
+};
+
+struct IntPair{
+    int first;
+    int second;
+
+    void printPair(){
+        std::cout << first << ' ' << second << std::endl;
+    }
 };
 
 BinaryNum createBinaryNumFromDec(int decimal);
@@ -41,5 +50,12 @@ BinaryNum createBinaryNumFromDec(int decimal);
 std::string intToBin(int n);
 
 std::vector<int> bitVectorFromString(std::string binary);
+
+std::vector<int> readIntsFromFileName(std::string srcName);
+
+IntPair castLineToIntPair(std::string line);
+std::vector<IntPair> readBitPairsFromFileName(std::string bitsFile);
+
+void encipherFileToOtherFile(std::string srcName, std::string bitsFile, std::string destName);
 
 #endif 

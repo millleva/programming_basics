@@ -6,11 +6,11 @@ using namespace std;
 
 int main()
 {
-    BinaryNum b = createBinaryNumFromDec(500);
-    b.printRepr();
-
-    b.swapBits(0, 1);
-    b.printRepr();
+    encipherFileToOtherFile(
+        "data/numbers_input.txt",
+        "data/bits_exchange.txt",
+        ""
+    );
 
     return 0;
 }
