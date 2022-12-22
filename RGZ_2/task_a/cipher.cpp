@@ -3,13 +3,13 @@
 using namespace std;
 
 string intToBin(int n){
-    string r;
+    string res;
     while(n != 0){
-        r = (n % 2 == 0 ? "0" : "1") + r; 
+        res = (n % 2 == 0 ? "0" : "1") + res; 
         n /= 2;
     }
 
-    return r;
+    return res;
 }
 
 vector<int> bitVectorFromString(string binary){

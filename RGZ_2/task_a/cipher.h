@@ -20,6 +20,19 @@ struct BinaryNum{
         std::cout << repr << std::endl;
     }
 
+    void updateReprFromBitVector(){
+        repr = "";
+        for(int index = bitVector.size() - 1; index >= 0; index--){
+            repr += std::to_string(bitVector[index]);
+        }
+    }
+
+    void swapBits(int a, int b){
+        int temp = bitVector[a];
+        bitVector[a] = bitVector[b];
+        bitVector[b] = temp;
+        updateReprFromBitVector();
+    }
     
 };
 
