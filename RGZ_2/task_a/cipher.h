@@ -56,6 +56,8 @@ std::vector<int> readIntsFromFileName(std::string srcName);
 IntPair castLineToIntPair(std::string line);
 std::vector<IntPair> readBitPairsFromFileName(std::string bitsFile);
 
+void writeBinaryNumsToFileName(std::string destName, std::vector<BinaryNum> binaryNums);
+
 void encipherFileToOtherFile(std::string srcName, std::string bitsFile, std::string destName);
 
 #endif 

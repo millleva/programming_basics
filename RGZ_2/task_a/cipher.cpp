@@ -74,6 +74,16 @@ vector<IntPair> readBitPairsFromFileName(string bitsFile){
     return bitPairs;
 }
 
+void writeBinaryNumsToFileName(string destName, vector<BinaryNum> binaryNums){
+    ofstream file;
+    file.open(destName);
+    for(auto binaryNum : binaryNums){
+        file << binaryNum.repr << endl;
+    }
+
+    file.close();
+}
+
 void encipherFileToOtherFile(string srcName, string bitsFile, string destName){
     vector<int> numbers = readIntsFromFileName(srcName);
     vector<BinaryNum> binaryNums;
@@ -88,9 +98,6 @@ void encipherFileToOtherFile(string srcName, string bitsFile, string destName){
         }
     }
 
-
-    for(auto binaryNum:binaryNums){
-        binaryNum.printRepr();
-    }
+    writeBinaryNumsToFileName(destName, binaryNums);
 }
 
