@@ -5,6 +5,8 @@
 #ifndef CIPHER_H
 #define CIPHER_H
 
+// STRUCTS
+//Binary number as string and as vector
 struct BinaryNum{
     std::string repr;
     std::vector<int> bitVector;
@@ -36,6 +38,11 @@ struct BinaryNum{
     }
 };
 
+BinaryNum createBinaryNumFromDec(int decimal);
+std::string intToBin(int n);
+std::vector<int> bitVectorFromString(std::string binary);
+
+// Bit pairs for exchange
 struct IntPair{
     int first;
     int second;
@@ -45,19 +52,18 @@ struct IntPair{
     }
 };
 
-BinaryNum createBinaryNumFromDec(int decimal);
-
-std::string intToBin(int n);
-
-std::vector<int> bitVectorFromString(std::string binary);
-
-std::vector<int> readIntsFromFileName(std::string srcName);
-
 IntPair castLineToIntPair(std::string line);
+
+// Ciphering
+std::vector<int> readIntsFromFileName(std::string srcName);
 std::vector<IntPair> readBitPairsFromFileName(std::string bitsFile);
-
 void writeBinaryNumsToFileName(std::string destName, std::vector<BinaryNum> binaryNums);
-
 void encipherFileToOtherFile(std::string srcName, std::string bitsFile, std::string destName);
+
+//Deciphering
+std::vector<BinaryNum> readBinaryNumsFromFileName(std::string srcName);
+int binToInt(BinaryNum binaryNum);
+void writeIntNumsToFile(std::string destName, std::vector<int> intNums);
+void decipherFileToOtherFile(std::string srcName, std::string bitsFile, std::string destName);
 
 #endif 

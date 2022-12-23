@@ -6,10 +6,16 @@ using namespace std;
 
 int main()
 {
-    encipherFileToOtherFile(
-        "data/numbers_input.txt",
+    // encipherFileToOtherFile(
+    //     "data/numbers_input.txt",
+    //     "data/bits_exchange.txt",
+    //     "data/numbers_output.txt"
+    // );
+
+    decipherFileToOtherFile(
+        "data/numbers_output.txt",
         "data/bits_exchange.txt",
-        "data/numbers_output.txt"
+        "data/numbers_deciphered.txt"
     );
 
     return 0;

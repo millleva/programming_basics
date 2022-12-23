@@ -1,10 +1,12 @@
 #include <fstream>
 #include <sstream>
+#include <cmath>
 
 #include "cipher.h"
 
 using namespace std;
 
+// Creating binary num
 string intToBin(int n){
     string res;
     while(n != 0){
@@ -33,6 +35,7 @@ BinaryNum createBinaryNumFromDec(int decimal){
     return b;
 }
 
+// Ciphering
 vector<int> readIntsFromFileName(string srcName){
     ifstream file;
     file.open(srcName);
@@ -100,4 +103,61 @@ void encipherFileToOtherFile(string srcName, string bitsFile, string destName){
 
     writeBinaryNumsToFileName(destName, binaryNums);
 }
+
+//Deciphering
+vector<BinaryNum> readBinaryNumsFromFileName(string srcName){
+    vector<BinaryNum> binaryNums;
+    ifstream file;
+    file.open(srcName);
+    string line;
+    while(getline(file, line)){
+        vector<int> bitVector = bitVectorFromString(line);
+        BinaryNum binaryNum = {line, bitVector};
+        binaryNums.push_back(binaryNum);
+    }
+
+    file.close();
+    return binaryNums;
+} 
+
+int binToInt(BinaryNum binaryNum){
+    int result = 0;
+    for(int index = 0; index < binaryNum.bitVector.size(); index++){
+        if(binaryNum.bitVector[index] == 1){
+            result += pow(2, index);
+        }
+    } 
+
+    return result;
+}
+
+void writeIntNumsToFile(string destName, vector<int> intNums){
+    ofstream file;
+    file.open(destName);
+    for(auto intNum : intNums){
+        file << intNum << endl;
+    }
+
+    file.close();
+}
+
+void decipherFileToOtherFile(string srcName, string bitsFile, string destName){
+    vector<BinaryNum> binaryNums = readBinaryNumsFromFileName(srcName);
+    vector<IntPair> bitPairs = readBitPairsFromFileName(bitsFile);
+
+    for(int index = 0; index < binaryNums.size(); index++){
+        for(auto pair:bitPairs){
+            binaryNums[index].swapBits(pair.first, pair.second);
+        }
+    }
+
+    vector<int> decimals;
+    for(auto binaryNum : binaryNums){
+        int decimal = binToInt(binaryNum);
+        decimals.push_back(decimal);
+    }
+
+    writeIntNumsToFile(destName, decimals);
+}
+
 
