@@ -49,5 +49,14 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    string mode = argv[1];
+    string input = argv[2];
+    string bits = argv[3];
+    string output = argv[4];
+    if(mode == "encipher")
+        encipherFileToOtherFile(input, bits, output);
+    else if(mode == "decipher")
+        decipherFileToOtherFile(input, bits, output); 
+
     return 0;
 }
