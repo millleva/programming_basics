@@ -1,0 +1,2 @@
+./bin/executable encipher data/numbers_input.txt data/bits_exchange.txt data/numbers_ciphered.txt
+./bin/executable decipher data/numbers_ciphered.txt data/bits_exchange.txt data/numbers_deciphered.txt
